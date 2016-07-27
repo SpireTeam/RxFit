@@ -40,13 +40,18 @@ import rx.subscriptions.Subscriptions;
  *
  */
 public abstract class BaseSingle<T> extends BaseRx<T> implements Single.OnSubscribe<T> {
-    private final boolean handleResolution;
+    protected final boolean handleResolution;
 
     private final Map<GoogleApiClient, SingleSubscriber<? super T>> subscriptionInfoMap = new ConcurrentHashMap<>();
 
     protected BaseSingle(@NonNull RxFit rxFit, Long timeout, TimeUnit timeUnit) {
         super(rxFit, timeout, timeUnit);
         handleResolution = true;
+    }
+
+    protected BaseSingle(@NonNull RxFit rxFit, Long timeout, TimeUnit timeUnit, boolean handleResolution) {
+        super(rxFit, timeout, timeUnit);
+        this.handleResolution = handleResolution;
     }
 
     protected BaseSingle(@NonNull Context ctx, @NonNull Api<? extends Api.ApiOptions.NotRequiredOptions>[] services, Scope[] scopes) {

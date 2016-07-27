@@ -34,6 +34,11 @@ public class HistoryReadDataSingle extends BaseSingle<DataReadResult> {
         this.dataReadRequest = dataReadRequest;
     }
 
+    HistoryReadDataSingle(RxFit rxFit, DataReadRequest dataReadRequest, Long timeout, TimeUnit timeUnit, boolean handleResolution) {
+        super(rxFit, timeout, timeUnit, handleResolution);
+        this.dataReadRequest = dataReadRequest;
+    }
+
     @Override
     protected void onGoogleApiClientReady(GoogleApiClient apiClient, final SingleSubscriber<? super DataReadResult> subscriber) {
         setupFitnessPendingResult(Fitness.HistoryApi.readData(apiClient, dataReadRequest), new ResultCallback<DataReadResult>() {

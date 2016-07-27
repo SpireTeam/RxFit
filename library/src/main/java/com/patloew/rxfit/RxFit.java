@@ -369,15 +369,25 @@ public class RxFit {
        // read
 
        public static Single<DataReadResult> read(@NonNull DataReadRequest dataReadRequest) {
-           return readInternal(dataReadRequest, null, null);
+           return readInternal(dataReadRequest, null, null, true);
+       }
+
+       public static Single<DataReadResult> read(@NonNull DataReadRequest dataReadRequest, boolean handleResolution) {
+           return readInternal(dataReadRequest, null, null, handleResolution);
        }
 
        public static Single<DataReadResult> read(@NonNull DataReadRequest dataReadRequest, long timeout, @NonNull TimeUnit timeUnit) {
-           return readInternal(dataReadRequest, timeout, timeUnit);
+           return readInternal(dataReadRequest, timeout, timeUnit, true);
        }
 
-       private static Single<DataReadResult> readInternal(DataReadRequest dataReadRequest, Long timeout, TimeUnit timeUnit) {
-           return Single.create(new HistoryReadDataSingle(RxFit.get(), dataReadRequest, timeout, timeUnit));
+       public static Single<DataReadResult> read(@NonNull DataReadRequest dataReadRequest, long timeout,
+                                                 @NonNull TimeUnit timeUnit, boolean handleResolution) {
+           return readInternal(dataReadRequest, timeout, timeUnit, handleResolution);
+       }
+
+       private static Single<DataReadResult> readInternal(DataReadRequest dataReadRequest, Long timeout,
+                                                          TimeUnit timeUnit, boolean handleResolution) {
+           return Single.create(new HistoryReadDataSingle(RxFit.get(), dataReadRequest, timeout, timeUnit, handleResolution));
        }
 
        // update
