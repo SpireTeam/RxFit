@@ -82,10 +82,13 @@ public abstract class BaseRx<T> {
             apiClientBuilder.addApi(service);
         }
 
-        if(scopes != null) {
+        if(scopes != null && scopes.length > 0) {
             for (Scope scope : scopes) {
                 apiClientBuilder.addScope(scope);
             }
+        } else {
+            // Assume this is a "permission-less" request
+            apiClientBuilder.useDefaultAccount();
         }
 
         apiClientBuilder.addConnectionCallbacks(apiClientConnectionCallbacks);
