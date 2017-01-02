@@ -49,6 +49,11 @@ public abstract class BaseObservable<T> extends BaseRx<T> implements Observable.
         handleResolution = true;
     }
 
+    protected BaseObservable(@NonNull RxFit rxFit, Long timeout, TimeUnit timeUnit, boolean handleResolution) {
+        super(rxFit, timeout, timeUnit);
+        this.handleResolution = handleResolution;
+    }
+
     protected BaseObservable(@NonNull Context ctx, @NonNull Api<? extends Api.ApiOptions.NotRequiredOptions>[] services, Scope[] scopes) {
         super(ctx, services, scopes);
         handleResolution = false;

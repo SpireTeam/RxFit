@@ -6,7 +6,7 @@ This library wraps the Fit API in [RxJava](https://github.com/ReactiveX/RxJava) 
 
 # Usage
 
-Initialize RxFit once, preferably in your Application `onCreate()` via `RxFit.init(...)`. Make sure to include all the APIs and Scopes that you need for your app. The RxFit class is very similar to the Fitness class provided by the Fit API. Instead of `Fitness.HistoryApi.readData(apiClient, dataReadRequest)` you can use `RxFit.History.read(dataReadRequest)`. Make sure to have the Location and Body Sensors permission from Marshmallow on, if they are needed by your Fit API requests. If the user didn’t already authorize your app for using fitness data, the lib handles showing the authorization dialog.
+Initialize RxFit once, preferably in your App `onCreate()` via `RxFit.init(...)`. Make sure to include all the APIs and Scopes that you need for your app. The RxFit class is very similar to the Fitness class provided by the Fit API. Instead of `Fitness.HistoryApi.readData(apiClient, dataReadRequest)` you can use `RxFit.History.read(dataReadRequest)`. Make sure to have the Location and Body Sensors permission from Marshmallow on, if they are needed by your Fit API requests. If the user didn’t already authorize your app for using fitness data, the lib handles showing the authorization dialog.
 
 Example:
 

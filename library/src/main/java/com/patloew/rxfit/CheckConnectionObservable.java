@@ -23,6 +23,10 @@ public class CheckConnectionObservable extends BaseObservable<Void> {
         super(rxFit, null, null);
     }
 
+    CheckConnectionObservable(RxFit rxFit, boolean handleResolution) {
+        super(rxFit, null, null, handleResolution);
+    }
+
     @Override
     protected void onGoogleApiClientReady(GoogleApiClient apiClient, Subscriber<? super Void> subscriber) {
         subscriber.onCompleted();

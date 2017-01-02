@@ -141,7 +141,11 @@ public class RxFit {
      * This Completable completes if the connection was successful.
      */
     public static Completable checkConnection() {
-        return Completable.fromObservable(Observable.create(new CheckConnectionObservable(RxFit.get())));
+        return checkConnection(true);
+    }
+
+    public static Completable checkConnection(boolean handleResolution) {
+        return Completable.fromObservable(Observable.create(new CheckConnectionObservable(RxFit.get(), handleResolution)));
     }
 
 
