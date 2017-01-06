@@ -66,6 +66,7 @@ public class ResolutionActivity extends Activity {
         resolutionShown = false;
         BaseRx.onResolutionResult(resultCode, (ConnectionResult) getIntent().getParcelableExtra(ARG_CONNECTION_RESULT));
         finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     static boolean isResolutionShown() {

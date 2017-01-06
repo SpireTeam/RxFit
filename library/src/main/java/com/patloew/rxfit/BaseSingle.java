@@ -135,6 +135,9 @@ public abstract class BaseSingle<T> extends BaseRx<T> implements Single.OnSubscr
                     intent.putExtra(ResolutionActivity.ARG_CONNECTION_RESULT, connectionResult);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
+                    if (ctx instanceof Activity) {
+                        ((Activity)ctx).overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    }
                 }
             } else {
                 subscriber.onError(new GoogleAPIConnectionException("Error connecting to GoogleApiClient.", connectionResult));
