@@ -6,8 +6,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.fitness.Fitness;
-import com.google.android.gms.fitness.request.DataUpdateListenerRegistrationRequest;
-import com.google.android.gms.fitness.request.DataUpdateListenerUnregistrationRequest;
 
 import java.util.concurrent.TimeUnit;
 
