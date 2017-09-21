@@ -90,6 +90,13 @@ public abstract class BaseRx<T> {
             // Assume this is a "permission-less" request
             apiClientBuilder.useDefaultAccount();
         }
+        
+        if (ctx instanceof AccountContext) {
+            String accountName = ((AccountContext)ctx).getAccountName();
+            if (accountName != null) {
+                apiClientBuilder.setAccountName(accountName);
+            }
+        }
 
         apiClientBuilder.addConnectionCallbacks(apiClientConnectionCallbacks);
         apiClientBuilder.addOnConnectionFailedListener(apiClientConnectionCallbacks);
@@ -121,5 +128,9 @@ public abstract class BaseRx<T> {
         public void setClient(GoogleApiClient client) {
             this.apiClient = client;
         }
+    }
+    
+    public interface AccountContext {
+        public String getAccountName();
     }
 }
